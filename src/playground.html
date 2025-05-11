@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Boundaries</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    .anime1 {
+      animation: size-up 3s ease-in 2;
+      animation-timeline: scroll(root);
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes size-up {
+      30% {
+        transform: scale(13, 13)
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="h-dvh border-2 border-dashed bg-amber-50">
+    <div id="container" class="size-70 border-2 border-dashed m-auto my-[13%] relative overflow-hidden">
+      <div class="size-[550px] opacity-60 bg-[url('./static/NaUX7.png')] absolute" id="map"></div>
+      <div class="size-5 bg-red-600 absolute" id="player"></div>
+    </div>
+  </div>
+
+  <script>
+    const player1 = document.getElementById("player");
+    const map = document.getElementById("map");
+    const container = document.getElementById("container");
+
+    const step = 10;
+    const containerRect = container.getBoundingClientRect();
+    const mapRect = map.getBoundingClientRect();
+    const playerRect = player1.getBoundingClientRect();
+
+    // Starting positions
+    let posX = 0;
+    let posY = 0;
+    let mapx = 0;
+    let mapy = 0;
+
+    // Set initial styles
+    player1.style.position = "absolute";
+    map.style.position = "absolute";
+    player1.style.left = posX + "px";
+    player1.style.top = posY + "px";
+    map.style.left = mapx + "px";
+    map.style.top = mapy + "px";
+
+    document.addEventListener("keydown", (e) => {
+      const key = e.key;
+
+      // Boundaries
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      const playerSize = player1.clientWidth;
+
+      switch (key) {
+        case "ArrowRight":
+          if (posX + step + playerSize <= containerWidth) {
+            posX += step;
+            mapx -= step;
+          }
+          break;
+        case "ArrowLeft":
+          if (posX - step >= 0) {
+            posX -= step;
+            mapx += step;
+          }
+          break;
+        case "ArrowUp":
+          if (posY - step >= 0) {
+            posY -= step;
+            mapy += step;
+          }
+          break;
+        case "ArrowDown":
+          if (posY + step + playerSize <= containerHeight) {
+            posY += step;
+            mapy -= step;
+          }
+          break;
+        default:
+          return;
+      }
+
+      // Apply updated styles
+      player1.style.left = posX + "px";
+      player1.style.top = posY + "px";
+      map.style.left = mapx + "px";
+      map.style.top = mapy + "px";
+    });
+  </script>
+</body>
+</html>
