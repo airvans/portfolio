@@ -3,6 +3,8 @@ dev portfolio - inprogress 😘
 
 this is me trying charater movement
 
-<video controls src="src/static/movement.mp4" title="Title"></video>
+
+https://github.com/user-attachments/assets/7e6a6412-7ba7-465a-aa23-613f06346300
+
 
 
