@@ -6,8 +6,29 @@
   <title>Game Boundaries</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
+.cube{
+
+  animation: rotate 10s linear 4;
+
+}
+
+@keyframes rotate{
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    30% { transform: rotateX(360deg) rotateY(360deg);}
+    60%{ transform: rotateX(0deg) rotateY(360deg)}
+    100% { transform: rotateX(360deg) rotateY(0deg); }
+
+}
   </style>
 </head>
 <body>
+<div class="cube size-[500px] border-2 border-dashed relative  transform-3d">
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 -translate-z-24 bg-red-400 ">1</div>
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 -translate-x-24 -rotate-y-90 bg-purple-400 ">2</div>
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 -translate-y-24 -rotate-x-90 bg-green-400 ">3</div>
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 translate-y-24 rotate-x-90  bg-cyan-400 ">4</div>
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 translate-x-24 rotate-y-90 bg-amber-400 ">5</div>
+  <div class="size-50 flex items-center justify-center font-bold text-3xl border-2 absolute top-30 left-30 translate-z-24 bg-blue-400 ">6</div>
+</div>
 </body>
 </html>
