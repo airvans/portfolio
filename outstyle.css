@@ -21,7 +21,6 @@
     --color-purple-400: oklch(71.4% 0.203 305.504);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-neutral-500: oklch(55.6% 0 0);
-    --color-neutral-700: oklch(37.1% 0 0);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-md: 28rem;
@@ -29,8 +28,6 @@
     --container-4xl: 56rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-5xl: 3rem;
@@ -277,9 +274,6 @@
   .me-2 {
     margin-inline-end: calc(var(--spacing) * 2);
   }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
-  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -294,9 +288,6 @@
   }
   .flex {
     display: flex;
-  }
-  .table {
-    display: table;
   }
   .size-7 {
     width: calc(var(--spacing) * 7);
@@ -332,14 +323,8 @@
   .w-206 {
     width: calc(var(--spacing) * 206);
   }
-  .w-md {
-    width: var(--container-md);
-  }
   .max-w-4xl {
     max-width: var(--container-4xl);
-  }
-  .border-collapse {
-    border-collapse: collapse;
   }
   .-translate-x-24 {
     --tw-translate-x: calc(var(--spacing) * -24);
@@ -402,9 +387,6 @@
   .animate-bounce {
     animation: var(--animate-bounce);
   }
-  .resize {
-    resize: both;
-  }
   .flex-col {
     flex-direction: column;
   }
@@ -432,10 +414,6 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -447,9 +425,6 @@
   .border-dotted {
     --tw-border-style: dotted;
     border-style: dotted;
-  }
-  .bg-amber-300 {
-    background-color: var(--color-amber-300);
   }
   .bg-amber-300\/80 {
     background-color: color-mix(in srgb, oklch(87.9% 0.169 91.605) 80%, transparent);
@@ -490,9 +465,6 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
-  .py-2\.5 {
-    padding-block: calc(var(--spacing) * 2.5);
-  }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
@@ -506,10 +478,6 @@
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
-  }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
@@ -534,18 +502,8 @@
   .text-neutral-500 {
     color: var(--color-neutral-500);
   }
-  .text-neutral-700 {
-    color: var(--color-neutral-700);
-  }
   .text-white {
     color: var(--color-white);
-  }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .perspective-normal {
     perspective: var(--perspective-normal);
@@ -670,11 +628,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -763,7 +716,6 @@
       --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
