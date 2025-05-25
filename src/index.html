@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="outstyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
-<body class=" ">
-  <nav class="border-2 border-dotted py-1 px-3 rounded-3xl flex justify-between items-center md:w-lg mt-1 mx-auto">
-    <img src="./static/wojak.png" alt="User avatar" class="rounded-full size-7 border-2 -m-2">
+<style>
+   .toastify-avatar{
+      width: 1.5em;
+      height: 1.5em;
+      margin: 0px;
+      margin-right: 10px;
+    }
+</style>
+
+<body class="bg-amber-300/80 overflow-hidden">
+  <nav class="border-2 border-dotted py-1 px-3 rounded-3xl flex justify-between items-center md:w-lg mt-2 mx-auto">
+    <img src="./static/p0TXxJhu.jpg" alt="my avatar" class="rounded-full size-7 border-2 -m-2">
     <ul class="flex gap-4 font-semibold text-md">
       <li><a href="projlog.html" class="hover:text-gray-300 block">Projects</a></li>
       <li><a href="devlog.html" class="hover:text-gray-300 block">Devlog</a></li>
@@ -18,12 +27,75 @@
   
 <div class="flex justify-center items-center h-[30rem]">
     <div class="max-w-4xl text-center flex flex-col items-center py-3">
-    <p class="text-neutral-700 text-sm">Lorem ipsum dolor sit</p>
+    <img src="./static/underconstruction.png" class="size-30">
     <p class="text-5xl my-2 font-extrabold">Lorem ipsum dolor sit amet <span class="">consectetur</span> adipiscing elit.</p>
-    <p class="mb-7 font-medium text-neutral-700 text-lg w-md "><span>Lorem ipsum dolor sit amet consectetur adipiscing elit</span><span>Dolor sit amet consectetur adipiscing elit quisque faucibus</span><span>sed do eiusmod tempor</span>elit quisque</p>
-    <!-- <audio src="./static/prime.mp3" controls="true"></audio> -->
-     <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">consectetur adipiscing</button>
+    <p class="mb-7 font-medium text-neutral-500 lg:text-md lg:w-md"><span>Lorem ipsum dolor sit amet consectetur adipiscing elit</span><span>Dolor sit amet consectetur adipiscing elit quisque faucibus</span><span>sed do eiusmod tempor</span>elit quisque</p>
+    <button id="stopmusic" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 animate-bounce">Click to stop music</button>
 </div>
 </div>
+
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -left-50 bottom-0 h-50 w-156  rotate-45 invisible md:visible">
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -left-50 bottom-0 h-50 w-156  rotate-30 invisible md:visible">
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -bottom-15 -left-30 h-50 w-206  rotate-15 invisible md:visible">
+
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -right-30 -top-30 h-40 w-156  rotate-45 invisible md:visible ">
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -right-30 -top-30 h-40 w-156  rotate-30 invisible md:visible">
+<img src="./static/cautiontape.svg" alt="" srcset="" class="absolute -top-35 -right-10 h-40 w-206  rotate-26 invisible md:visible">
+
+<audio id="jazz-bg" src="./static/jazz.mp3" loop="true" autoplay></audio>
+<audio id="notification-audio" src="./static/notification-alert-9-331720.mp3" preload="auto"></audio>
 </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+
+const audioElement = document.getElementById("notification-audio")
+const background = document.getElementById("jazz-bg")
+let volumeResetTimeout;
+
+stopmusic.addEventListener("click",()=>{
+  console.log("hahahahahahhaha.....you clicked")
+  if (audioElement) {
+    // Clear any pending volume reset
+    if(volumeResetTimeout) {
+      clearTimeout(volumeResetTimeout);
+      volumeResetTimeout = null;
+    }
+
+    // Lower the background volume
+    background.volume = 0.2;
+
+    // Restart and play the notification sound
+    audioElement.currentTime = 0;
+    audioElement.play().catch(error => {
+      console.error("Notification sound playback failed:", error.message);
+    });
+
+    // Restore the volume after the notification duration
+    volumeResetTimeout = setTimeout(() => {
+      background.volume = 1.0;
+      volumeResetTimeout = null;
+    }, audioElement.duration * 1000); // Convert seconds to ms
+  }
+
+  Toastify({
+    text:"Site under construction !!",
+    duration:3000,
+    style:{
+      "border-radius":"10px",
+      "color":"black",
+      "background":"white",
+      "display":"flex"
+    },
+    avatar:"./static/fail-svgrepo-com.svg",
+  }).showToast()
+})
+
+window.addEventListener("click",()=>{
+    stopmusic.classList.remove("animate-bounce")
+    background.play().catch((error) => {
+        console.log("Autoplay prevented:", error);
+      });
+},{once:true})
+
+</script>
 </html>
